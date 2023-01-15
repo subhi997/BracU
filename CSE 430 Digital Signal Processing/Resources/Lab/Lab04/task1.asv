@@ -1,0 +1,9 @@
+close all
+clear all
+clc
+
+x = [2, 3, 5, -2]
+h1=[-1, 0, 3, 4 ]
+h2 = [ 2, 3 0, 7, 1 ]
+
+ conv(x,h1)

@@ -1,0 +1,9 @@
+x=[1 2 4 6 8 10 12 16];
+n=[0: length(x)-1];
+factor = input('sampling by factor:');
+x_downsampled=[];
+for i=1:factor:length(x)
+    x_downsampled= [x_downsampled x(i)];
+end
+
+
