@@ -1,0 +1,71 @@
+Lab03 (Alpha-Beta Pruning)
+Name: Tajmim Hossain Purnata 
+ID: 17101146
+Section: 01
+
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov 27 16:18:44 2020
+
+@author: IMADN
+"""
+
+file=open('C:\\Users\IMADN\Desktop\AlphaBetaPruning\input.txt', 'r')
+dep=file.readline().strip()
+depth=int(dep)*2
+print("Depth:",depth)
+branch=int(file.readline().strip())
+print("Branch:",branch)
+
+#alpha beta values
+line=file.readline().strip()
+value=line.split(" ")
+minimum= int(value[0])
+maximum= int(value[1])
+node=0
+#print(minimum)
+#print(maximum)
+
+#leafnode
+source=[]
+x=pow(branch, depth)
+print("Terminal states:", x)
+for i in range(x):
+    y=int(input("Enter node value: "))
+    source.append(y)
+
+#print(source)
+
+def alpha_beta( depth, n, source, alpha, beta, maximizingPlayer):
+    if depth==0 or node==None:
+        return source[node]
+    
+    if maximizingPlayer:
+        maxeval=-100000
+        for child in range(depth):
+            value= alpha_beta(depth-1, n*2+child, source, alpha, beta, False)
+            maxeval=max(value, maxeval)
+            alpha=max(alpha, value)
+            if beta <= alpha:
+                break
+        return maxeval
+    
+    else:
+        mineval=100000
+        for child in range(depth):
+            value= alpha_beta( depth-1, n*2+child, source, alpha, beta, True)
+            mineval=min(mineval, value)
+            beta=min(beta, value)
+            if beta <= alpha:
+                break
+        return mineval
+    
+print("The maximum value is:", alpha_beta(depth, node, source, maximum, minimum, True))
+
+#branching factor before alpha_beta
+before= pow(branch,depth)
+#branching factor after alpha_beta
+after=int(pow(2*branch,depth/2)+1) #"+1" for counting the first node
+
+print("Before Alpha_beta Pruning:", before)
+print("After Alpha_beta Pruning:", after)

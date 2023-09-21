@@ -1,0 +1,62 @@
+import numpy as np
+file =open('C:\\Users\IMADN\Desktop\BFS\BFS.txt','r')
+#reading first line for vertex count
+line1=file.readline().strip()
+vertexcount=int(line1[0]) +1
+
+#reading 2nd line for edge count
+line2=file.readline().strip()
+edgecount=int(line2[0]) +1
+
+#creat adjacent matrix
+adjmatrix= np.zeros((vertexcount, vertexcount), dtype='int')
+print(adjmatrix)
+while True:
+    line =file.readline().strip() 
+    
+    if not line:
+        break
+        
+    vertices=line.split(" ")
+    u= int(vertices[0])+1
+    v= int(vertices[1])+1
+        #print(u)
+        #print(v)
+  
+    adjmatrix[u][v]+= 1
+for row in range(vertexcount):
+    for col in range(vertexcount):
+        print(adjmatrix[row][col], end=' ')
+    print()
+
+color[:]="White"
+parent=np.empty((vertexcount), dtype="object")
+parent[:]=np.NaN
+d=np.empty((vertexcount), dtype="int")
+d[:]= 999999
+#queue using queue model
+from queue import Queue
+#initializing queue
+myqueue= Queue(maxsize= vertexcount)
+#bfs function
+def bfs(s):
+    global color, parent, d
+    color[s]= 'Gray'
+    parent[s]= np.nan
+    d[s]= 0
+    myqueue.put(s)
+    while not myqueue.empty():
+        u=myqueue.get() #popping element
+        #print(u)
+        for v in range(1, vertexcount):
+            if adjmatrix[u][v]==1:
+                if color[v] == 'White':
+                    color='Gray'
+                    d[v]=d[u] +1
+                    parent[v]=u
+                    myqueue.put(v)
+        color[u]= 'Black'
+        print(u, 'distance: ', d[u])
+        
+    return
+bfs(6)
