@@ -1,0 +1,17 @@
+public class DateTest{
+  public static void main(String[]args){
+    Date x1 = new Date(21,4,2018);
+    x1.displayDate();
+    
+    Date x2 = new Date();
+    x2.setDay(9);
+    x2.setMonth(11);
+    x2.setYear(1997);
+    x2.displayDate();
+    
+    Date x3 = new Date(12,10,1820);
+    x3.displayDate();
+  }
+}
+      
+      

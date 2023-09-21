@@ -1,0 +1,19 @@
+public class ComplexNumber extends RealNumber{
+  private double complexValue=1.0;
+  public ComplexNumber(){   
+  }
+  
+  super(1.0);
+  public String toString() {
+    return "ImaginaryPart: "+getComplexValue();
+  }
+  public double getComplexValue() {
+    return complexValue;
+  }
+  public void ping() {
+    System.out.println("I'm in ComplexNumber class");
+  }
+  public void check(){
+    System.out.println("Checking Ended.");
+  }
+}
